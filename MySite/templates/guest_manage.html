@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <title>嘉宾</title>
+</head>
+<body>
+<!-- 导航栏    -->
+<div style="background-color: aliceblue;height:50px;padding-top: 10px">
+        <a href="#" style="float:left;padding-left: 100px;color: darkcyan;font-size: 20px">Guest Manage System</a>
+        <ul style="list-style: none">
+            <li style="float:left;padding-left: 20px;padding-top: 6px;"><a href="/search_name/" style="color: darkcyan;font-size: 15px">发布会</a></li>
+            <li style="float:left;padding-left: 30px;padding-top: 6px"><a href="/guest_manage/" style="color: darkcyan;font-size: 15px" >嘉宾</a></li>
+            <li style="float:left;padding-left: 700px;padding-top: 6px"><a href="#" style="color: darkcyan;font-size: 15px">{{ user }}</a></li>
+            <li style="float:left;padding-left: 40px;padding-top: 6px"><a href="/logout/" style="color: darkcyan;font-size: 15px">退出</a></li>
+        </ul>
+</div>
+<!-- 嘉宾列表    -->
+<div class="row" style='padding-top: 30px;text-align: center;padding-left: 180px'>
+    <div class="col-md-6">
+        <table class="table table-striped" style="width: 1000px">
+            <thead>
+            <tr>
+                <th style="text-align: center">id</th>
+                <th style="text-align: center">名称</th>
+                <th style="text-align: center">手机</th>
+                <th style="text-align: center">Email</th>
+                <th style="text-align: center">签到</th>
+                <th style="text-align: center">发布会</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for guest in guests %}
+                <tr>
+                    <td>{{ guest.id }}</td>
+                    <td>{{ guest.realname }}</td>
+                    <td>{{ guest.phone }}</td>
+                    <td>{{ guest.email }}</td>
+                    <td>{{ guest.sign }}</td>
+                    <td>{{ guest.event }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

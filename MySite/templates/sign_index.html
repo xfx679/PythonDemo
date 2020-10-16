@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <title>{{ event.name }}</title>
+</head>
+<body>
+<!-- 导航栏    -->
+<div style="background-color: aliceblue;height:50px;padding-top: 10px">
+    <a href="#" style="float:left;padding-left: 100px;color: darkcyan;font-size: 20px">Guest Manage System</a>
+    <ul style="list-style: none">
+        <li style="float:left;padding-left: 20px;padding-top: 6px;">
+            <a href="/search_name/" style="color: darkcyan;font-size: 15px">发布会</a>
+        </li>
+        <li style="float:left;padding-left: 30px;padding-top: 6px">
+            <a href="/guest_manage/" style="color: darkcyan;font-size: 15px">嘉宾</a>
+        </li>
+        <li style="float:left;padding-left: 700px;padding-top: 6px">
+            <a href="#" style="color: darkcyan;font-size: 15px">{{ user }}</a>
+        </li>
+        <li style="float:left;padding-left: 40px;padding-top: 6px">
+            <a href="/logout/" style="color: darkcyan;font-size: 15px">退出</a>
+        </li>
+    </ul>
+</div>
+<!-- 签到功能    -->
+<div class="page-header" style="text-align: center">
+    <div id="navbar" class="navbar-collapse collapse">
+        <form class="navbar-form" method="post" action="/sign_index_action/{{ event.id }}/">
+            <div class="form-group">
+                <input name="phone" type="text" placeholder="输入手机号" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">签到</button>
+            <div style="color: red">
+                <br>{{ hint }}
+                <br>{{ guest.realname }}
+                <br>{{ guest.phone }}
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
